@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import pokemons from "./pokemons";
 
 export default function PokeNameValidator() {
@@ -6,10 +6,15 @@ export default function PokeNameValidator() {
    * Component logic goes here
    */
   const [selectedPokemon, setSelectedPokemon] = useState(RandomPokemon());
+  const inputPokeValidatorRef = useRef();
 
   function RandomPokemon() {
     let randomNumber = Math.floor(Math.random() * pokemons.length);
     return pokemons[randomNumber];
+  }
+
+  function OnChange() {
+    let input = inputPokeValidatorRef.current.value;
   }
 
   return (
@@ -20,7 +25,12 @@ export default function PokeNameValidator() {
         <strong>{selectedPokemon}</strong>
       </p>
       <p className="secondary">Type the Pokémon name correctly:</p>
-      <input type="text" placeholder="Enter the Pokémon name" />
+      <input
+        ref={inputPokeValidatorRef}
+        type="text"
+        onChange={OnChange}
+        placeholder="Enter the Pokémon name"
+      />
     </div>
   );
 }
