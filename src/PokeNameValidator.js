@@ -15,6 +15,12 @@ export default function PokeNameValidator() {
 
   function OnChange() {
     let input = inputPokeValidatorRef.current.value;
+
+    if (selectedPokemon === input) {
+      // alert("Correct! Play again?");
+      setSelectedPokemon(RandomPokemon);
+      inputPokeValidatorRef.current.value = null;
+    }
   }
 
   return (
