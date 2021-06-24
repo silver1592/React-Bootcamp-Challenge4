@@ -5,17 +5,11 @@ export default function PokeNameValidator() {
   /**
    * Component logic goes here
    */
-  const [selectedPokemon, setSelectedPokemon] = useState(pokemons[0]);
+  const [selectedPokemon, setSelectedPokemon] = useState(RandomPokemon());
 
-  function RandomPokemon(currentPokemon) {
-    let nextPokemon = {};
-    do {
-      let randomNumber = Math.floor(Math.random() * pokemons.length);
-      nextPokemon = pokemons[randomNumber];
-      console.log(nextPokemon);
-    } while (nextPokemon === currentPokemon);
-
-    return nextPokemon;
+  function RandomPokemon() {
+    let randomNumber = Math.floor(Math.random() * pokemons.length);
+    return pokemons[randomNumber];
   }
 
   return (
