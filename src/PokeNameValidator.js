@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import pokemons from "./pokemons";
 
 export default function PokeNameValidator() {
@@ -17,7 +17,7 @@ export default function PokeNameValidator() {
     let input = inputPokeValidatorRef.current.value;
 
     if (selectedPokemon === input) {
-      // alert("Correct! Play again?");
+      alert("Correct! Play again?");
       setSelectedPokemon(RandomPokemon);
       inputPokeValidatorRef.current.value = null;
     }
@@ -34,7 +34,7 @@ export default function PokeNameValidator() {
       <input
         ref={inputPokeValidatorRef}
         type="text"
-        onChange={OnChange}
+        onKeyUp={OnChange}
         placeholder="Enter the Pokémon name"
       />
     </div>
